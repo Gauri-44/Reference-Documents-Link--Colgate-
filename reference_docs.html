@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SLA Documents</title>
+    <title>SLA Reference Documents</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -49,14 +49,14 @@
 
     <div class="container-card rounded-2xl w-full max-w-4xl p-6 md:p-8">
 
-        <!-- Header -->
-        <div class="flex flex-col items-center mb-8 text-center">
-            <div class="p-3 bg-indigo-500 rounded-full text-white mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Header: The icon is now next to the heading, and the heading font size is slightly reduced. -->
+        <div class="flex items-center justify-center mb-8">
+            <div class="p-2 bg-indigo-500 rounded-full text-white mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-5 4h4a2 2 0 002-2V6a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
             </div>
-            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">SLA Documents</h1>
+            <h1 class="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight">SLA Reference Documents</h1>
         </div>
 
         <!-- Search Bar -->
@@ -116,74 +116,81 @@
                 <button id="sort-horizon-asc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">A-Z</button>
                 <button id="sort-horizon-desc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">Z-A</button>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-2">
                 <!-- Links for Horizon -->
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/spreadsheets/d/1ho0vCFKMwv8ud1wtiR_1ATnCxSc2TKr_2fcxv-vomKI/edit?gid=1706048000#gid=1706048000" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Endpoint Records in Horizon</h2>
+                        <h2 class="text-sm font-semibold text-gray-900">Endpoint Records in Horizon</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/document/d/1o9ry5zZ1i69z2WWvvnEYP6zcYasf6F4hhnaAPdSNVeA/edit?tab=t.0" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">User Accesss Provisioning</h2>
+                        <h2 class="text-sm font-semibold text-gray-900">User Accesss Provisioning</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/document/d/1FcRzx0cvZvrrQS7HrFEeCIFYkbOTKGFXOrTn_lCTGOo/edit?tab=t.0" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">App Provisioning</h2>
+                        <h2 class="text-sm font-semibold text-gray-900">App Provisioning</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/document/d/1I0XRStaee_99SUAWRg2BvNDhuH7cSx8jTi1VMGwXiVw/edit?tab=t.0" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Certificate Renewal</h2>
+                        <h2 class="text-sm font-semibold text-gray-900">Certificate Renewal</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/document/d/1I0XRStaee_99SUAWRg2BvNDhuH7cSx8jTi1VMGwXiVw/edit?tab=t.0" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Platform and Component Upgrade</h2>
+                        <h2 class="text-sm font-semibold text-gray-900">Platform and Component Upgrade</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/document/d/1B1XXl2cBFKQ6nIgcsHQhA2ueYcF9wOAuDHCVXDan1iM/edit?tab=t.0" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">SLA Doc for Horizon</h2>
+                        <h2 class="text-sm font-semibold text-gray-900">SLA Doc for Horizon</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="https://docs.google.com/document/d/1C3pBW-ODQX-U2oPVNWBXDlGo1GgMBylhKobZmqwCARQ/edit?tab=t.0" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Governance - for Horizon </h2>
+                        <h2 class="text-sm font-semibold text-gray-900">Governance - for Horizon </h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
@@ -196,34 +203,37 @@
                 <button id="sort-servers-asc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">A-Z</button>
                 <button id="sort-servers-desc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">Z-A</button>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-2">
                 <!-- Links for Servers -->
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="Link" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Document-1</h2>
+                        <h2 class="text-xs font-semibold text-gray-900">Document-1</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="Link" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Document 2</h2>
+                        <h2 class="text-xs font-semibold text-gray-900">Document 2</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
-                <div class="document-link-container p-4 rounded-xl">
+                <div class="document-link-container p-2 rounded-xl">
                     <a href="Link" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">Document 3</h2>
+                        <h2 class="text-xs font-semibold text-gray-900">Document 3</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
@@ -329,9 +339,9 @@
                 const newLinkContainer = createDocumentElement(name, link, isFile);
 
                 if (docTeam === 'horizon') {
-                    horizonContent.querySelector('.space-y-4').appendChild(newLinkContainer);
+                    horizonContent.querySelector('.space-y-2').appendChild(newLinkContainer);
                 } else if (docTeam === 'servers') {
-                    serversContent.querySelector('.space-y-4').appendChild(newLinkContainer);
+                    serversContent.querySelector('.space-y-2').appendChild(newLinkContainer);
                 }
 
                 addDocMessage.textContent = `Document "${name}" has been added to the ${docTeam} team.`;
@@ -347,14 +357,14 @@
             // Helper function to create a new document element with delete button
             const createDocumentElement = (name, link, isFile) => {
                 const newLinkContainer = document.createElement('div');
-                newLinkContainer.className = 'document-link-container p-4 rounded-xl';
+                newLinkContainer.className = 'document-link-container p-2 rounded-xl';
                 newLinkContainer.dataset.fileUrl = isFile ? link : ''; // Store the object URL
                 newLinkContainer.innerHTML = `
                     <a href="${link}" target="_blank" class="flex-grow">
-                        <h2 class="text-lg font-semibold text-gray-900">${name}</h2>
+                        <h2 class="text-xs font-semibold text-gray-900">${name}</h2>
                     </a>
-                    <button class="delete-button ml-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
                         </svg>
                     </button>
@@ -392,7 +402,7 @@
 
             // Sorting logic
             const sortDocuments = (containerId, order) => {
-                const container = document.getElementById(containerId).querySelector('.space-y-4');
+                const container = document.getElementById(containerId).querySelector('.space-y-2');
                 const documents = Array.from(container.querySelectorAll('.document-link-container'));
 
                 documents.sort((a, b) => {
