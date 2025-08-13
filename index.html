@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLA Reference Documents</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+        }
+        .container-card {
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-button.active {
+            background-color: #4f46e5;
+            color: white;
+            border-bottom-color: transparent;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #4f46e5;
+        }
+        .document-link-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            background-color: #f1f5f9;
+        }
+        .document-link-container:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="container-card rounded-2xl w-full max-w-4xl p-6 md:p-8">
+
+        <!-- Header: The icon is now next to the heading, and the heading font size is slightly reduced. -->
+        <div class="flex items-center justify-center mb-8">
+            <div class="p-2 bg-indigo-500 rounded-full text-white mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-5 4h4a2 2 0 002-2V6a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <h1 class="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight">SLA Reference Documents</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mb-6">
+            <input type="text" id="search-input" placeholder="Search documents..." class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-100 text-gray-900 placeholder-gray-500 transition-colors duration-300">
+        </div>
+
+        <!-- Tab Buttons -->
+        <div class="flex border-b-2 border-gray-300 mb-6 -mx-1 md:-mx-2">
+            <button id="add-doc-tab" class="tab-button flex-1 py-3 px-4 text-center text-sm font-semibold text-gray-500 hover:text-indigo-500 hover:bg-gray-100 rounded-t-lg mx-1 md:mx-2">
+                Add Document
+            </button>
+            <button id="horizon-tab" class="tab-button active flex-1 py-3 px-4 text-center text-sm font-semibold text-white bg-indigo-500 rounded-t-lg mx-1 md:mx-2">
+                Horizon Team
+            </button>
+            <button id="servers-tab" class="tab-button flex-1 py-3 px-4 text-center text-sm font-semibold text-gray-500 hover:text-indigo-500 hover:bg-gray-100 rounded-t-lg mx-1 md:mx-2">
+                Servers Team
+            </button>
+        </div>
+
+        <!-- Tab Content Containers -->
+        <div id="add-doc-content" class="tab-content hidden">
+            <form id="add-document-form" class="space-y-4 p-4 bg-gray-100 rounded-xl">
+                <div>
+                    <label for="doc-name" class="block text-sm font-medium text-gray-700">Document Name (Optional if uploading file)</label>
+                    <input type="text" id="doc-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div>
+                    <label for="doc-link" class="block text-sm font-medium text-gray-700">Document Link (Optional if uploading file)</label>
+                    <input type="url" id="doc-link" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div>
+                    <label for="doc-file" class="block text-sm font-medium text-gray-700">Upload Document (Optional)</label>
+                    <input type="file" id="doc-file" class="mt-1 block w-full text-sm text-gray-500
+                                                        file:mr-4 file:py-2 file:px-4
+                                                        file:rounded-full file:border-0
+                                                        file:text-sm file:font-semibold
+                                                        file:bg-indigo-50 file:text-indigo-700
+                                                        hover:file:bg-indigo-100">
+                </div>
+                <div>
+                    <label for="doc-team" class="block text-sm font-medium text-gray-700">Team</label>
+                    <select id="doc-team" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="horizon">Horizon Team</option>
+                        <option value="servers">Servers Team</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300">
+                    Add Document
+                </button>
+            </form>
+            <div id="add-doc-message" class="mt-4 p-3 bg-green-500 text-white rounded-lg hidden"></div>
+        </div>
+
+        <div id="horizon-content" class="tab-content">
+            <div class="flex justify-end mb-4 space-x-2">
+                <button id="sort-horizon-asc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">A-Z</button>
+                <button id="sort-horizon-desc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">Z-A</button>
+            </div>
+            <div class="space-y-2">
+                <!-- Links for Horizon -->
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/spreadsheets/d/1ho0vCFKMwv8ud1wtiR_1ATnCxSc2TKr_2fcxv-vomKI/edit?gid=1706048000#gid=1706048000" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">Endpoint Records in Horizon</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/document/d/1o9ry5zZ1i69z2WWvvnEYP6zcYasf6F4hhnaAPdSNVeA/edit?tab=t.0" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">User Accesss Provisioning</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/document/d/1FcRzx0cvZvrrQS7HrFEeCIFYkbOTKGFXOrTn_lCTGOo/edit?tab=t.0" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">App Provisioning</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/document/d/1I0XRStaee_99SUAWRg2BvNDhuH7cSx8jTi1VMGwXiVw/edit?tab=t.0" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">Certificate Renewal</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/document/d/1I0XRStaee_99SUAWRg2BvNDhuH7cSx8jTi1VMGwXiVw/edit?tab=t.0" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">Platform and Component Upgrade</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/document/d/1B1XXl2cBFKQ6nIgcsHQhA2ueYcF9wOAuDHCVXDan1iM/edit?tab=t.0" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">SLA Doc for Horizon</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="https://docs.google.com/document/d/1C3pBW-ODQX-U2oPVNWBXDlGo1GgMBylhKobZmqwCARQ/edit?tab=t.0" target="_blank" class="flex-grow">
+                        <h2 class="text-sm font-semibold text-gray-900">Governance - for Horizon </h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="servers-content" class="tab-content hidden">
+            <div class="flex justify-end mb-4 space-x-2">
+                <button id="sort-servers-asc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">A-Z</button>
+                <button id="sort-servers-desc" class="px-4 py-2 text-xs font-semibold text-gray-900 bg-gray-200 rounded-full hover:bg-gray-300 transition duration-300">Z-A</button>
+            </div>
+            <div class="space-y-2">
+                <!-- Links for Servers -->
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="Link" target="_blank" class="flex-grow">
+                        <h2 class="text-xs font-semibold text-gray-900">Document-1</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="Link" target="_blank" class="flex-grow">
+                        <h2 class="text-xs font-semibold text-gray-900">Document 2</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="document-link-container p-2 rounded-xl">
+                    <a href="Link" target="_blank" class="flex-grow">
+                        <h2 class="text-xs font-semibold text-gray-900">Document 3</h2>
+                    </a>
+                    <!-- The delete icon size has been reduced to h-4 w-4 -->
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                    <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mt-2">Delete Document</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p id="modal-text" class="text-sm text-gray-500">Are you sure you want to delete this document?</p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="confirm-delete" class="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 sm:ml-3 sm:w-auto">
+                        Yes, Delete
+                    </button>
+                    <button id="cancel-delete" class="mt-3 px-4 py-2 bg-white text-base font-medium text-gray-700 rounded-md w-full shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-300 sm:mt-0 sm:w-auto">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+            const searchInput = document.getElementById('search-input');
+            const addDocForm = document.getElementById('add-document-form');
+            const addDocMessage = document.getElementById('add-doc-message');
+            const docNameInput = document.getElementById('doc-name');
+            const docLinkInput = document.getElementById('doc-link');
+            const docFileInput = document.getElementById('doc-file');
+            const modal = document.getElementById('confirmation-modal');
+            const confirmBtn = document.getElementById('confirm-delete');
+            const cancelBtn = document.getElementById('cancel-delete');
+            const horizonContent = document.getElementById('horizon-content');
+            const serversContent = document.getElementById('servers-content');
+
+            let docToDelete = null;
+
+            // Tab switching logic
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const currentActiveTab = document.querySelector('.tab-button.active');
+                    if (currentActiveTab) {
+                        currentActiveTab.classList.remove('active', 'bg-indigo-500', 'text-white');
+                        currentActiveTab.classList.add('text-gray-500', 'hover:text-indigo-500', 'hover:bg-gray-100');
+                    }
+                    
+                    contents.forEach(c => c.classList.add('hidden'));
+
+                    tab.classList.add('active', 'bg-indigo-500', 'text-white');
+                    tab.classList.remove('text-gray-500', 'hover:text-indigo-500', 'hover:bg-gray-100');
+
+                    const targetId = tab.id.replace('-tab', '-content');
+                    document.getElementById(targetId).classList.remove('hidden');
+
+                    searchInput.value = '';
+                    filterDocuments();
+                });
+            });
+
+            // Add Document form submission logic
+            addDocForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const docName = docNameInput.value;
+                const docLink = docLinkInput.value;
+                const docFile = docFileInput.files[0];
+                const docTeam = document.getElementById('doc-team').value;
+
+                let name = docName;
+                let link = docLink;
+                let isFile = false;
+
+                if (docFile) {
+                    name = docFile.name;
+                    link = URL.createObjectURL(docFile);
+                    isFile = true;
+                } else if (docName && docLink) {
+                    name = docName;
+                    link = docLink;
+                } else {
+                    addDocMessage.textContent = 'Please provide either a document link and name, or upload a file.';
+                    addDocMessage.classList.remove('hidden', 'bg-green-500');
+                    addDocMessage.classList.add('bg-red-500');
+                    setTimeout(() => {
+                        addDocMessage.classList.add('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                const newLinkContainer = createDocumentElement(name, link, isFile);
+
+                if (docTeam === 'horizon') {
+                    horizonContent.querySelector('.space-y-2').appendChild(newLinkContainer);
+                } else if (docTeam === 'servers') {
+                    serversContent.querySelector('.space-y-2').appendChild(newLinkContainer);
+                }
+
+                addDocMessage.textContent = `Document "${name}" has been added to the ${docTeam} team.`;
+                addDocMessage.classList.remove('hidden', 'bg-red-500');
+                addDocMessage.classList.add('bg-green-500');
+                setTimeout(() => {
+                    addDocMessage.classList.add('hidden');
+                }, 3000);
+
+                addDocForm.reset();
+            });
+
+            // Helper function to create a new document element with delete button
+            const createDocumentElement = (name, link, isFile) => {
+                const newLinkContainer = document.createElement('div');
+                newLinkContainer.className = 'document-link-container p-2 rounded-xl';
+                newLinkContainer.dataset.fileUrl = isFile ? link : ''; // Store the object URL
+                newLinkContainer.innerHTML = `
+                    <a href="${link}" target="_blank" class="flex-grow">
+                        <h2 class="text-xs font-semibold text-gray-900">${name}</h2>
+                    </a>
+                    <button class="delete-button ml-4 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.728-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 112 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                `;
+                newLinkContainer.querySelector('.delete-button').addEventListener('click', (event) => {
+                    event.preventDefault();
+                    showConfirmModal(newLinkContainer);
+                });
+                return newLinkContainer;
+            };
+
+            // Modal functionality
+            const showConfirmModal = (element) => {
+                docToDelete = element;
+                modal.classList.remove('hidden');
+            };
+
+            const hideConfirmModal = () => {
+                docToDelete = null;
+                modal.classList.add('hidden');
+            };
+
+            confirmBtn.addEventListener('click', () => {
+                if (docToDelete) {
+                    const fileUrl = docToDelete.dataset.fileUrl;
+                    if (fileUrl) {
+                        URL.revokeObjectURL(fileUrl); // Clean up the temporary URL
+                    }
+                    docToDelete.remove();
+                    hideConfirmModal();
+                }
+            });
+
+            cancelBtn.addEventListener('click', hideConfirmModal);
+
+            // Sorting logic
+            const sortDocuments = (containerId, order) => {
+                const container = document.getElementById(containerId).querySelector('.space-y-2');
+                const documents = Array.from(container.querySelectorAll('.document-link-container'));
+
+                documents.sort((a, b) => {
+                    const textA = a.querySelector('h2').textContent.toLowerCase();
+                    const textB = b.querySelector('h2').textContent.toLowerCase();
+                    if (order === 'asc') {
+                        return textA.localeCompare(textB);
+                    } else {
+                        return textB.localeCompare(textA);
+                    }
+                });
+
+                documents.forEach(doc => container.appendChild(doc));
+            };
+
+            // Event listeners for sorting buttons
+            document.getElementById('sort-horizon-asc').addEventListener('click', () => sortDocuments('horizon-content', 'asc'));
+            document.getElementById('sort-horizon-desc').addEventListener('click', () => sortDocuments('horizon-content', 'desc'));
+            document.getElementById('sort-servers-asc').addEventListener('click', () => sortDocuments('servers-content', 'asc'));
+            document.getElementById('sort-servers-desc').addEventListener('click', () => sortDocuments('servers-content', 'desc'));
+
+            // Search filtering logic
+            const filterDocuments = () => {
+                const searchValue = searchInput.value.toLowerCase();
+                const activeContent = document.querySelector('.tab-content:not(.hidden)');
+                if (!activeContent) return;
+                const documents = activeContent.querySelectorAll('.document-link-container');
+
+                documents.forEach(doc => {
+                    const docTitle = doc.querySelector('h2').textContent.toLowerCase();
+                    if (docTitle.includes(searchValue)) {
+                        doc.style.display = 'flex';
+                    } else {
+                        doc.style.display = 'none';
+                    }
+                });
+            };
+
+            searchInput.addEventListener('input', filterDocuments);
+
+            // Initial setup to add delete buttons to the static documents
+            const allStaticDocs = document.querySelectorAll('.document-link-container');
+            allStaticDocs.forEach(doc => {
+                doc.querySelector('.delete-button').addEventListener('click', (event) => {
+                    event.preventDefault();
+                    showConfirmModal(doc);
+                });
+            });
+
+            // Handle required attribute changes on form inputs
+            docLinkInput.addEventListener('input', () => {
+                if (docLinkInput.value.length > 0) {
+                    docNameInput.setAttribute('required', 'required');
+                    docFileInput.removeAttribute('required');
+                } else {
+                    docNameInput.removeAttribute('required');
+                }
+            });
+
+            docFileInput.addEventListener('change', () => {
+                if (docFileInput.files.length > 0) {
+                    docLinkInput.removeAttribute('required');
+                    docNameInput.removeAttribute('required');
+                } else {
+                    if (docLinkInput.value.length === 0) {
+                        docNameInput.removeAttribute('required');
+                    }
+                }
+            });
+
+            addDocForm.addEventListener('change', () => {
+                if (docLinkInput.value || docFileInput.files.length > 0) {
+                    docNameInput.removeAttribute('required');
+                    docLinkInput.removeAttribute('required');
+                } else {
+                    docNameInput.setAttribute('required', 'required');
+                    docLinkInput.setAttribute('required', 'required');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
